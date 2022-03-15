@@ -13,7 +13,7 @@ const imgListItem = imgList.querySelectorAll('li');
 const imgListItemTT = imgList.querySelectorAll('figcaption p:first-child');
 
 const active = 'active';
-const gridView = 'gird-view';
+const gridView = 'grid-view';
 const listView = 'list-view';
 const hidden = 'd-none';
 
@@ -25,7 +25,18 @@ btns.forEach(function(btn,idx){
             const parent = el.parentElement;
             parent.classList.remove(active);
             btns[idx].parentElement.classList.add(active);
+            // console.log(parent);
+            if(btns[idx].parentElement.classList.contains('show-list')){
+                btns[idx].parentElement.previousElementSibling.previousElementSibling.classList.add(hidden);
+                imgList.classList.remove(gridView);
+                imgList.classList.add(listView);
+            } else{
+                btns[idx].parentElement.previousElementSibling.classList.remove(hidden);
+                imgList.classList.remove(listView);
+                imgList.classList.add(gridView);
+            }
         }
+
     });
 });
 
