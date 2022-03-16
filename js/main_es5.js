@@ -37,7 +37,23 @@ class Filter{
                 text : item.textContent
             });
         }  
-        this.search.addEventListener('keyup',this.handler);  
+        this.search.addEventListener('keyup',function(){
+            console.log(this.value);
+            for(const item of this.imgListItem){
+                item.classList.add(this.hidden);
+                const keyword = this.value;
+                console.log(keyword);
+                const arr2 = this.myArr.filter(el=>{
+                return el.text.includes(keyword);
+            });
+            if(arr2.length > 0){
+                for(const el of arr2){
+                    document.querySelector(`.image-list li:nth-child(${el.id})`).classList.remove(this.hidden);
+                }
+            }
+            this.totlePT.innerText = arr2.length;
+            }
+        }); 
     }
     Btns01(target,idx){
         for(const el of target){
@@ -64,22 +80,7 @@ class Filter{
     }
 
 
-    handler(){
-        for(const item of this.imgListItem){
-            console.log(item);
-            // item.classList.add(this.hidden);
-            // const keyword = this.value;
-            // const arr2 = myArr.filter(function(el){
-            // return el.text.includes(keyword);
-            // });
-            // if(arr2.length > 0){
-            //     for(const el of arr2){
-            //         document.querySelector(`.image-list li:nth-child(${el.id})`).classList.remove(this.hidden);
-            //     }
-            // }
-            // totlePT.innerText = arr2.length;
-        }
-    }
+
 }
 
 
