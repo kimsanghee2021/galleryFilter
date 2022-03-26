@@ -23,25 +23,24 @@ class Filter{
         this.hidden = 'd-none';
     }
     bindingEvent(){
-        this.btns.forEach(function(btn,idx){
+        this.btns.forEach((btn,idx)=>{
     
             btn.addEventListener('click', e=>{
                 e.preventDefault();
     
                 this.Btns01(this.btns, idx);
             });
-        }.bind(this));
+        });
         for(const item of this.imgListItemTT){
             this.myArr.push({
                 id:this.countIdx++,
                 text : item.textContent
             });
         }  
-        this.search.addEventListener('keyup',function(){
-            console.log(this.value);
+        this.search.addEventListener('keyup',()=>{
             for(const item of this.imgListItem){
                 item.classList.add(this.hidden);
-                const keyword = this.value;
+                const keyword = this.search.value;
                 console.log(keyword);
                 const arr2 = this.myArr.filter(el=>{
                 return el.text.includes(keyword);

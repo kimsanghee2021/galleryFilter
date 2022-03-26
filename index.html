@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gallery filter thumnail page</title>
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/main.js"></script>
+    <!-- <script defer src="js/main.js"></script> -->
+    <script src="js/main_es5.js"></script>
+    <script>
+        window.onload = ()=>{
+            new Filter(); 
+        }
+    </script>
 </head>
 <body>
     <section class="gallery">
@@ -145,8 +151,6 @@
             </ol>
         </div>
     </section>
-    <script>
-        //new Filter();
-    </script>
+
 </body>
 </html>
